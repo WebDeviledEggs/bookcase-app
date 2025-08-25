@@ -24,9 +24,10 @@ const Navbar = () => {
         <div className="navbar-menu">
           {isAuthenticated ? (
             <>
-              <Link to="/tbr" className="navbar-link">My TBR</Link>
-              <Link to="/library" className="navbar-link">My Library</Link>
-              <Link to="/stats" className="navbar-link">My Stats</Link>
+              <Link to="/search" className="navbar-link">Search Books</Link>
+              <Link to="/my-tbr" className="navbar-link">My TBR</Link>
+              <Link to="/my-library" className="navbar-link">My Library</Link>
+              <Link to="/my-stats" className="navbar-link">My Stats</Link>
               
               <div className="navbar-user">
                 <span className="user-greeting">Welcome, {user?.username}!</span>

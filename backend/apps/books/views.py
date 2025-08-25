@@ -1,6 +1,7 @@
 import requests
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import ensure_csrf_cookie  # Add this import
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -65,6 +66,7 @@ def search_books(request):
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+@ensure_csrf_cookie  # Add this decorator
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_book_to_library(request):
@@ -132,6 +134,7 @@ def my_books(request):
     }, status=status.HTTP_200_OK)
 
 
+@ensure_csrf_cookie  # Add this to other POST/PUT views too
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def update_book_status(request, user_book_id):
@@ -165,6 +168,7 @@ def update_book_status(request, user_book_id):
     }, status=status.HTTP_200_OK)
 
 
+@ensure_csrf_cookie  # Add this to other POST/PUT views too
 @api_view(['POST', 'PUT'])
 @permission_classes([IsAuthenticated])
 def rate_book(request, user_book_id):
