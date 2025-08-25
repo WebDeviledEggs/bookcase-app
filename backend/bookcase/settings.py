@@ -34,10 +34,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     
-    # Local apps
-    'apps.users',
-    'apps.books',
-    'apps.stats',
+    # Local apps - use proper app configs
+    'apps.users.apps.UsersConfig',
+    'apps.books.apps.BooksConfig',
+    'apps.stats.apps.StatsConfig',
 ]
 
 MIDDLEWARE = [
@@ -45,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',  # Make sure this is enabled
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -122,13 +122,37 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20
 }
 
+# Session and CSRF settings for cross-origin requests
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_HTTPONLY = False  # Allow JavaScript access
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = False
+SESSION_COOKIE_SECURE = False  # For development (HTTP)
+
+# Make sure cookies work across localhost ports
+SESSION_COOKIE_DOMAIN = None  # Don't restrict domain
+CSRF_COOKIE_DOMAIN = None
+
 # CORS settings for React frontend
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React dev server
+    "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = False  # Keep this False for security
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 # Custom registration password (for CS50x project)
 REGISTRATION_PASSWORD = os.getenv('REGISTRATION_PASSWORD', 'cs50bookcase2024')
@@ -136,3 +160,4 @@ REGISTRATION_PASSWORD = os.getenv('REGISTRATION_PASSWORD', 'cs50bookcase2024')
 # Session settings
 SESSION_COOKIE_AGE = 86400  # 24 hours
 SESSION_SAVE_EVERY_REQUEST = True
+
