@@ -1,0 +1,25 @@
+Here are the commands to activate your virtual environment and run both servers:
+1. Activate Virtual Environment & Start Django Backend
+bash# Navigate to your backend directory
+cd bookcase-app/backend
+
+# Activate virtual environment (the command depends on your OS)
+
+# For Windows:
+venv\Scripts\activate
+
+# For macOS/Linux:
+source venv/bin/activate
+
+# You should see (venv) at the beginning of your command prompt
+
+# Start Django server
+python manage.py runserver
+
+2. Start React Frontend (in a new terminal)
+bash# Open a new terminal/command prompt
+# Navigate to your frontend directory
+cd bookcase-app/frontend
+
+# Start React development server
+npm start
