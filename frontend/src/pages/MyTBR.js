@@ -183,8 +183,8 @@ const MyTBR = () => {
   return (
     <div className="my-tbr-container">
       <div className="page-header">
-        <h1 className="page-title">My Reading List</h1>
-        <p className="page-subtitle">Manage your TBR and currently reading books</p>
+        <h1 className="page-title">My TBR</h1>
+        <p className="page-subtitle">Manage your ever-growing TBR and currently-reading books</p>
         
         <div className="page-actions">
           <Link to="/search" className="btn btn-primary">

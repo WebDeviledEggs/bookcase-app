@@ -1,0 +1,45 @@
+Virtual Environment Setup (PowerShell)
+
+1. Verify Python Installation
+python --version
+pip --version
+
+# Should show Python 3.9+ and pip version
+# If not found, install Python from python.org
+
+2. Create Virtual Environment
+# Navigate to backend directory
+cd bookcase-app\backend
+
+# Create virtual environment
+python -m venv venv
+
+3. Activate Virtual Environment
+# Activate the environment
+venv\Scripts\Activate.ps1
+
+# If you get ExecutionPolicy error, run this first:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Then try activating again:
+venv\Scripts\Activate.ps1
+
+# You should see (venv) at the start of your prompt
+
+4. Install Project Dependencies
+# Install all required packages
+pip install -r requirements.txt
+
+5. Verify Installation
+# Check Django is installed
+python -c "import django; print(django.get_version())"
+
+# Test server startup
+python manage.py runserver
+
+Troubleshooting:
+- If venv activation fails: Use Command Prompt instead (venv\Scripts\activate.bat)
+- If dependencies fail: Check Python version compatibility
+- If server won't start: Check if port 8000 is already in use
+
+Note: Virtual environments are machine-specific and should not be committed to Git!

@@ -1,0 +1,142 @@
+/* Bookshelf Image Overlay Approach */
+.bookshelf-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #002FA7;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.bookshelf-image-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.bookshelf-background {
+  position: relative;
+  width: 1500px;
+  height: 1200px;
+  /* You can replace this URL with your own bookshelf image */
+  background-image: url('./bookshelf.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Overlay positioning for each shelf */
+.shelf-overlay {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 80px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Position each shelf at different heights */
+.shelf-1 {
+  top: 350px; /* Top shelf */
+}
+
+.shelf-2 {
+  top: 650px; /* Second shelf */
+}
+
+.shelf-3 {
+  top: 950px; /* Third shelf */
+}
+
+.shelf-4 {
+  top: 1250px; /* Bottom shelf */
+}
+
+.shelf-text {
+  background: rgba(0, 0, 0, 0.192);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.shelf-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.shelf-description {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 400;
+  display: block;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Hover effects */
+.shelf-overlay:hover .shelf-text {
+  background: rgba(0, 47, 167, 0.85);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.shelf-overlay:hover .shelf-title {
+  transform: translateY(-2px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .bookshelf-background {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .shelf-overlay {
+    width: 250px;
+    height: 60px;
+  }
+  
+  .shelf-1 {
+    top: 40px;
+  }
+  
+  .shelf-2 {
+    top: 120px;
+  }
+  
+  .shelf-3 {
+    top: 200px;
+  }
+  
+  .shelf-4 {
+    top: 280px;
+  }
+  
+  .shelf-title {
+    font-size: 1rem;
+  }
+  
+  .shelf-description {
+    font-size: 0.8rem;
+  }
+}

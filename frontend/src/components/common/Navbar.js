@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="navbar-container">
         {/* Logo/Brand */}
         <Link to="/" className="navbar-brand">
-          📚 The BookCase
+          📚 BookCase
         </Link>
 
         {/* Navigation Links */}
